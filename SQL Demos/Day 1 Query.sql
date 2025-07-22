@@ -8,6 +8,8 @@ GO
 INSERT INTO Department VALUES(1, 'IT')
 INSERT INTO Department VALUES(2, 'HR')
 INSERT INTO Department VALUES(3, 'Sales')
+
+Drop table Employee
 -- Create Employee Table
 CREATE TABLE Employee
 (
@@ -31,6 +33,7 @@ GO
 select * from dbo.Department
 
 select * from dbo.Employee
+
 
 CREATE VIEW vwGetAllEmployees
 AS
@@ -110,3 +113,90 @@ WITH ENCRYPTION
 AS
 select * from Employee where DeptID=2
 WITH CHECK OPTION
+
+
+
+
+--create view based on Another View
+
+CREATE VIEW vwITEmployees
+AS
+SELECT Id,Name,DOB,Gender,DeptID from 
+vwGetAllEmployees where DeptId=1
+
+
+select * from vwITEmployees
+
+-- CTE ==>
+
+
+Drop table Employee
+Create Table Employees
+(
+    Id INT PRIMARY KEY,
+    Name VARCHAR(50), 
+    Department VARCHAR(10),
+    Salary INT,
+)
+Go
+
+Insert Into Employees Values (1, 'James', 'IT', 80000)
+Insert Into Employees Values (2, 'Taylor', 'IT', 80000)
+Insert Into Employees Values (3, 'Pamela', 'HR', 50000)
+Insert Into Employees Values (4, 'Sara', 'HR', 40000)
+Insert Into Employees Values (5, 'David', 'IT', 35000)
+Insert Into Employees Values (6, 'Smith', 'HR', 65000)
+Insert Into Employees Values (7, 'Ben', 'HR', 65000)
+Insert Into Employees Values (8, 'Stokes', 'IT', 45000)
+Insert Into Employees Values (9, 'Taylor', 'IT', 70000)
+Insert Into Employees Values (10, 'John', 'IT', 68000)
+Go
+
+select * from Employees
+
+--CTE
+
+WITH HighSalaryCTE AS(
+SELECT Id,Name,Department,Salary 
+FROM Employees
+WHERE Salary>=80000
+)
+
+SELECT * FROM HighSalaryCTE
+
+
+
+select * from Employees
+
+
+
+SELECT Name,Salary,E.Department,
+d.TotalEmployees,
+d.TotalSalary,
+d.MinSalary,
+d.MaxSalary,
+d.AverageSalary
+FROM employees e
+INNER Join(
+SELECT Department,
+count(*)  as TotalEmployees,
+sum(salary) as TotalSalary,
+min(salary) as MinSalary,
+Max(salary) as MaxSalary,
+Avg(Salary) as AverageSalary
+FROM Employees 
+Group BY Department)
+d on d.Department=e.Department
+
+
+
+-- same result using Over Clause
+
+SELECT Name,Salary,Department,
+count(department) OVER(PARTITION BY Department) as DepartmentTotals,
+SUM(Salary) OVER(PARTITION BY Department) as TotalSalary,
+Min(Salary) OVER(PARTITION BY Department) as MinSalary,
+Max(Salary) OVER(PARTITION BY Department) as MaxSalary,
+Avg(Salary) OVER(PARTITION BY Department) as Averagesalry
+FROM Employees
+
