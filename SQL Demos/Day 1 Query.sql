@@ -260,3 +260,40 @@ DELETE FROM DeleteDuplicateCTE Where RowNumber > 1
 
 
 SELECT * FROM Employees
+TRUNCATE TABLE Employees
+
+INSERT INTO Employees VALUES
+(1, 'James', 'IT', 80000),
+(2, 'Taylor', 'IT', 80000),
+(3, 'Pamela', 'HR', 50000),
+(4, 'Sara', 'HR', 40000),
+(5, 'David', 'IT', 35000),
+(6, 'Smith', 'HR', 65000),
+(7, 'Ben', 'HR', 65000),
+(8, 'Stokes', 'IT', 45000),
+(9, 'Taylor', 'IT', 70000),
+(10, 'John', 'IT', 68000);
+SELECT Name,Department,Salary,
+DENSE_RANK() OVER(PARTITION BY Department ORDER BY SALARY desc) AS [Rank]
+FROM Employees
+
+WITH EmployeeCTE AS (
+    SELECT Salary, RANK() OVER (ORDER BY Salary DESC) AS Rank_Salry
+    FROM Employees
+)
+SELECT TOP 1 Salary FROM EmployeeCTE WHERE Rank_Salry = 2;
+
+WITH EmployeeCTE AS (
+    SELECT Salary, DENSE_RANK() OVER (ORDER BY Salary DESC) AS DenseRank_Salry
+    FROM Employees
+)
+SELECT TOP 1 Salary FROM EmployeeCTE WHERE DenseRank_Salry = 2;
+
+WITH EmployeeCTE AS (
+    SELECT Salary, Department,
+           DENSE_RANK() OVER (PARTITION BY Department ORDER BY Salary DESC) AS Salary_Rank
+    FROM Employees
+)
+SELECT TOP 1 Salary 
+FROM EmployeeCTE 
+WHERE Salary_Rank = 3 AND Department = 'IT';
