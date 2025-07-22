@@ -84,3 +84,29 @@ values
 ('others',3)
 
 
+Select * from Employee
+select * from Department
+
+CREATE VIEW vwHREmployees
+AS
+select * from Employee where DeptID=2
+
+select * from vwHREmployees
+
+insert into vwHREmployees (Id,Name,Gender,DOB,DeptID)
+values (8,'Roshini','Female','3-3-2000',1)
+
+
+ALTER VIEW vwHREmployees
+AS
+select * from Employee where DeptID=2
+WITH CHECK OPTION
+
+
+sp_helptext vwHREmployees
+
+ALTER VIEW vwHREmployees
+WITH ENCRYPTION
+AS
+select * from Employee where DeptID=2
+WITH CHECK OPTION
