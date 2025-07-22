@@ -200,3 +200,63 @@ Max(Salary) OVER(PARTITION BY Department) as MaxSalary,
 Avg(Salary) OVER(PARTITION BY Department) as Averagesalry
 FROM Employees
 
+
+truncate table employees
+select * from Employees
+INSERT INTO Employees VALUES
+(1, 'James', 'IT', 15000),
+(2, 'Smith', 'IT', 35000),
+(3, 'Rasol', 'HR', 15000),
+(4, 'Rakesh', 'Payroll', 35000),
+(5, 'Pam', 'IT', 42000),
+(6, 'Stokes', 'HR', 15000),
+(7, 'Taylor', 'HR', 67000),
+(8, 'Preety', 'Payroll', 67000),
+(9, 'Priyanka', 'Payroll', 55000),
+(10, 'Anurag', 'Payroll', 15000),
+(11, 'Marshal', 'HR', 55000),
+(12, 'David', 'IT', 96000);
+
+SELECT Id,Name,Department,Salary,
+ROW_NUMBER() OVER(PARTITION BY Department ORDER BY Name)
+AS RowNumber From Employees
+
+SELECT Id,Name,Department,Salary,
+ROW_NUMBER() OVER(ORDER BY Name)
+AS RowNumber From Employees
+
+
+Drop table Employees
+
+CREATE TABLE [dbo].[Employees](
+	[Id] [int] NOT NULL,
+	[Name] [varchar](50) NULL,
+	[Department] [varchar](10) NULL,
+	[Salary] [int] NULL,
+	)
+TRUNCATE TABLE Employees;
+
+INSERT INTO Employees VALUES
+(1, 'James', 'IT', 15000),
+(1, 'James', 'IT', 15000),
+(2, 'Rasol', 'HR', 15000),
+(2, 'Rasol', 'HR', 15000),
+(2, 'Rasol', 'HR', 15000),
+(3, 'Stokes', 'HR', 15000),
+(3, 'Stokes', 'HR', 15000),
+(3, 'Stokes', 'HR', 15000),
+(3, 'Stokes', 'HR', 15000);
+
+Select * from Employees
+
+
+WITH DeleteDuplicateCTE AS
+(
+select *,ROW_NUMBER() OVER (PARTITION BY ID ORDER BY ID)
+AS RowNumber from EMployees)
+
+
+DELETE FROM DeleteDuplicateCTE Where RowNumber > 1
+
+
+SELECT * FROM Employees
