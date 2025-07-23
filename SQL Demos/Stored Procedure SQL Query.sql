@@ -112,6 +112,7 @@ print @empCount
 
 ALTER PROC spGetEmplyeeCountByGender1
 (@femaleCount int OUT,@maleCount int OUT)
+WITH RECOMPILE
 AS
 BEGIN
 SELECT @femaleCount=COUNT(ID) FROM Employees WHERE Gender='female'
@@ -122,3 +123,26 @@ END
 DECLARE @femaleCount int,@maleCount int
 EXEC spGetEmplyeeCountByGender1 @femaleCount OUT,@maleCount OUT
 Print 'female : '+CAST(@femaleCount as varchar(10)) +'  Male :'+CAST(@maleCount as varchar(5))
+
+
+sp_helptext  spGetEmplyeeCountByGender1
+
+
+
+--Stored Procedure with default value
+ALTER PROC spGetEmplyeeCountByGender
+(@gender varchar(10)='male',
+@empCount int OUT)
+AS
+BEGIN
+SELECT @empCount=count(ID) FROM Employees WHERE Gender=@gender
+END
+
+DECLARE @count int
+EXEC spGetEmplyeeCountByGender @empCount=@count OUT
+print @count
+
+
+DECLARE @count1 int
+EXEC spGetEmplyeeCountByGender @gender='female', @empCount=@count1 OUT
+print @count1
