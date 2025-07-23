@@ -41,12 +41,14 @@ CREATE TABLE Employee (
 );
 
 INSERT INTO Employee VALUES
-(1, 'Pranaya', 'Male','1996-02-29', 1),
-(2, 'Priyanka', 'Female','1995-05-25', 2),
-(3, 'Anurag', 'Male','1995-04-19', 2),
-(4, 'Preety', 'Female','1996-03-17', 3),
-(5, 'Sambit', 'Male','1997-01-15', 1),
-(6, 'Hina', 'Female','1995-07-12', 2);
+(1, 'Geetha', 'Female', '1996-02-29', 1),
+(2, 'Fransy', 'Female', '1995-05-25', 2),
+(3, 'Gopi', 'Male', '1995-04-19', 2),
+(4, 'BanuRekha', 'Female', '1996-03-17', 3),
+(5, 'Shalini', 'Female', '1997-01-15', 1),
+(6, 'Kalai', 'Female', '1995-07-12', 2),
+(7, 'Santosh', 'Male', '1994-10-10', 1),
+(8, 'Hariharan', 'Male', '1993-08-21', 2);
 ```
 
 ---

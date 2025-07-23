@@ -297,3 +297,28 @@ WITH EmployeeCTE AS (
 SELECT TOP 1 Salary 
 FROM EmployeeCTE 
 WHERE Salary_Rank = 3 AND Department = 'IT';
+
+--Assignment
+/*Create a Product Catalog View with Price
+The Marketing Team needs a view of Active Products(model_year> 2018)
+along with the brand,category and price
+
+View neds to show the product_id,Product_name,brand_name,category_name,list_price
+display the view using order by category_name,product_Name
+
+*/
+
+/*
+The inventory team wants to identify products that haven't been sold. Create a view listing all products that have zero sales.
+*/
+/*
+The inventory team wants to identify products that haven't been sold. Create a view listing all products that have zero sales.
+Write a query that:
+
+Ranks products within each category by list price (highest first)
+
+Returns only the first product per category
+
+Expected Output:
+category_name, product_name, list_price — only one row per category
+*/
