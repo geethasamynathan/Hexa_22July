@@ -24,6 +24,34 @@ CREATE TABLE tblEmployeeAudit
 SELECT * FROM tblEmployee
 SELECT * from tblEmployeeAudit
 
+
+INSERT INTO tblEmployee VALUES
+(6,'Ankita',45000,'Female',3)
+
+
+CREATE TRIGGER trg_AfterInsert_Employee
+ON tblEmployee
+AFTER INSERT
+AS
+BEGIN
+PRINT 'Record Inserted in tblEmployee'
+END
+
+--instead of trigger
+/*
+restricting the permission to insert
+*/
+ALTER TRIGGER trg_insteadofInsert_Employee
+ON tblEmployee
+instead of INSERT
+AS
+BEGIN
+PRINT 'insertion denied '
+Rollback
+END
+
+select GETDATE()
+
 CREATE TRIGGER tr_tblEMployee_ForInsert
 ON tblEmployee
 FOR INSERT
@@ -38,6 +66,10 @@ END
 
 
 Insert into tblEmployee values (8,'Tan1', 2300, 'Female', 3)
+
+
+select * into mynewtable from Department
+
 
 CREATE trigger tr_tblEmployee_ForUpdate
 on tblEmployee
