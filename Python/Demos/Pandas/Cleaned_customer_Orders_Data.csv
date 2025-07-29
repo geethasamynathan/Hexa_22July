@@ -1,0 +1,51 @@
+,OrderID,CustomerName,Email,Product,Quantity,PricePerUnit,OrderDate,Total Price
+0,1,Alice Smith,ALICE@EXAMPLE.COM,Laptop,1.0,550.0,2023-01-15,550.0
+1,2,Bob Johnson,bob[at]example.com,Moblie,2.0,200.0,2023-02-12,400.0
+2,3,Charlie,charlie@example.com,Tablet,1.0,180.5,2023-03-01,180.5
+3,4,Diana Prince,diana@example.com,,3.0,350.75,2023-03-25,1052.25
+4,5,,EVE@EXAMPLE.COM,Laptop,1.0,599.99,2023-03-25,599.99
+5,6,Frank Castle,frank@@example.com,Headphones,2.0,-50.0,2023-04-15,-100.0
+6,7,Grace Hopper,,Smart Watch,0.0,120.0,2023-05-05,0.0
+7,8,Harry Potter,harry@example.com,Tablet,1.0,200.0,2023-05-20,200.0
+8,9,Isabella,isabella.example.com,Mobile,2.0,300.0,2023-06-11,600.0
+9,10,John Doe,john@example.com,Moblie,1.0,150.0,2023-07-01,150.0
+11,11,Kate Bell,kate@ sample.com,Laptop,2.0,500.0,2023-07-15,1000.0
+12,12,Leo Messi,leo@example,Laptop,2.0,499.0,2023-08-20,998.0
+13,13,Mary Jane,mary@example.com,Headphones,2.0,120.0,2023-09-01,240.0
+14,14,Nathan Drake,nathan@example.com,Tablet,1.0,230.0,2023-09-13,230.0
+15,15,Olivia Brown,,Smart Watch,1.0,269.59,2023-09-15,269.59
+16,16,Peter Parker,peter@example.com,Smart Watch,1.0,125.0,2023-09-17,125.0
+17,17,Quincy,quincy@samplecom,Laptop,1.0,0.0,2023-10-01,0.0
+18,18,Rachel Green,rachel@example.com,Tablet,2.0,180.0,2023-11-05,360.0
+19,19,Steve Rogers,steve@example.com,Tablet,2.0,180.0,2023-11-05,360.0
+20,20,Tony Stark,,Laptap,1.0,800.0,2023-11-10,800.0
+21,21,Uma Thurman,uma@example.com,Headphones,1.0,-75.5,2023-12-01,-75.5
+22,22,Victor,victor@example.com,Mobile,2.0,299.0,2023-12-10,598.0
+23,23,,,,1.0,269.59,2023-12-10,269.59
+24,24,Wanda Maximoff,wanda@@example.com,Tablet,3.0,150.0,2023-12-30,450.0
+25,25,X Æ A-12,x@example.com,Smart Watch,1.0,199.99,2024-01-01,199.99
+26,26,Yasmine,yasmine@example.com,Moblie,2.0,300.0,2024-01-03,600.0
+27,27,Zack Morris,zack@example,Mobile,1.0,250.0,2024-01-05,250.0
+28,28,Alicia Keys,alicia@.com,Headphones,3.0,99.0,2024-01-07,297.0
+29,29,Bob,bob@example.com,Laptop,1.0,520.0,2024-01-08,520.0
+30,30,Cara,cara@example.com,Mobile,0.0,280.0,2024-01-10,0.0
+31,31,Dan,,Tablet,1.0,269.59,2024-01-15,269.59
+32,32,Ella,ella@example.com,Tablet,2.0,180.0,2024-01-17,360.0
+33,33,Fred,fred@example.com,Moblie,1.0,300.0,2024-01-20,300.0
+34,34,Gina,gina@example.com,Moblie,1.0,299.0,2024-01-22,299.0
+35,35,Harry,harry@,Tablet,1.0,200.0,2024-01-24,200.0
+36,36,Ivy,ivy@example.com,,1.0,220.0,2024-01-26,220.0
+37,37,Jack,jack@example.com,Tablet,2.0,-180.0,2024-01-28,-360.0
+38,38,Ken,ken@example.com,Laptop,2.0,599.0,2024-02-01,1198.0
+39,39,Liam,liam@example.com,Mobile,1.0,320.0,2024-02-03,320.0
+40,40,Mia,mia@ sample.com,Smart Watch,1.0,200.0,2024-02-05,200.0
+41,41,Nora,nora@example,Smart Watch,1.0,190.0,2024-02-07,190.0
+42,42,Oscar,oscar@example.com,Laptop,1.0,650.0,2024-02-09,650.0
+43,43,Paul,paul@example.com,Tablet,3.0,185.0,2024-02-10,555.0
+44,44,Quinn,quinn@example.com,Tablet,2.0,269.59,2024-02-12,539.18
+45,45,Rita,rita@example.com,Moblie,1.0,310.0,2024-02-13,310.0
+46,46,Sam,sam@example.com,Headphones,0.0,110.0,2024-02-15,0.0
+47,47,Tina,,Laptop,1.0,700.0,2024-02-17,700.0
+48,48,Uma,uma@@example.com,Tablet,1.0,180.0,2024-02-18,180.0
+49,49,Victor,victor@example.com,Tablet,2.0,180.0,2024-02-20,360.0
+50,50,Will,will@example.com,Laptop,1.0,620.0,2024-02-22,620.0
