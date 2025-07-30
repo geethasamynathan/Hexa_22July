@@ -50,7 +50,7 @@ display(sales_by_country)
 - Chart Type: `Bar`
 - X-Axis: `Country`
 - Y-Axis: `sum(Sales)`
-
+![alt text](image-15.png)
 ---
 
 ## 📊 Scenario 2: Profit vs Sales – Scatter Plot
@@ -80,19 +80,23 @@ display(segment_sales)
 - Values: `sum(Sales)`
 
 ---
+![alt text](image-16.png)
 
 ## 📊 Scenario 4: Monthly Sales Trend – Line Chart
 
 ```python
-monthly_sales = df.groupBy("Month").sum("Sales").orderBy("Month")
-display(monthly_sales)
+from pyspark.sql.functions import month,year,sum
+
+df=df.withColumn("Month",month(col("Date")))
+df=df.withColumn("Year",year(col("Date")))
+display(df.groupby("Month").sum("Sales").orderBy("Month"))
 ```
 
 **Visualization Settings:**
 - Chart Type: `Line`
 - X-Axis: `Month`
 - Y-Axis: `sum(Sales)`
-
+![alt text](image-17.png)
 ---
 
 ## 📊 Scenario 5: Average Profit by Year – Area Chart
@@ -100,13 +104,17 @@ display(monthly_sales)
 ```python
 yearly_profit = df.groupBy("Year").avg("Profit").orderBy("Year")
 display(yearly_profit)
+
+from pyspark.sql.functions import avg
+
+display(df.groupBy("Year","Product").agg(avg("Profit").alias("Average_Profit")).orderBy("Year","Product"))
 ```
 
 **Visualization Settings:**
 - Chart Type: `Area`
 - X-Axis: `Year`
 - Y-Axis: `avg(Profit)`
-
+![alt text](image-18.png)
 ---
 
 ## 📊 Scenario 6: Heatmap of Sales by Country & Segment
@@ -121,19 +129,8 @@ display(heatmap_data)
 - Keys: `Country`
 - Series Grouping: `Segment`
 - Values: `sum(Sales)`
-
+![alt text](image-19.png)
 ---
-
-## 🔍 Add Filters in Databricks
-
-Once you use `display(df)` or `display(grouped_df)`, the UI allows you to:
-
-- Add dropdown filters (e.g., filter by Segment or Year)
-- Click the filter icon above the table
-- Combine multiple filter conditions
-
----
-
 ## ✅ Summary Table
 
 | Chart Type | Use Case | Spark Code |
@@ -152,6 +149,4 @@ Once you use `display(df)` or `display(grouped_df)`, the UI allows you to:
 - Enable filters in the UI using the top-right “Filter” icon
 - Export visualizations from Databricks for presentations
 
----
 
-Let me know if you want this in `.ipynb` notebook or `.docx` format.
