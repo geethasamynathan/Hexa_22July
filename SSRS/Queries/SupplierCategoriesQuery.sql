@@ -1,0 +1,4 @@
+--SupplierCategoriesQuery
+SELECT SupplierCategoryID
+, SupplierCategoryName
+FROM Purchasing.SupplierCategories
