@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <ProjectInfo>
     <Name>Day2_SSIS_Demo</Name>
-    <LastWriteTime>2025-08-09T04:44:26.2617744Z</LastWriteTime>
+    <LastWriteTime>2025-08-09T09:03:24.5404622Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -13,7 +13,27 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>9 Import city from excel to SQL.dtsx</Name>
-      <LastWriteTime>2025-08-09T04:44:26.2286306Z</LastWriteTime>
+      <LastWriteTime>2025-08-09T07:13:28.8780611Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>10 XML to SQL.dtsx</Name>
+      <LastWriteTime>2025-08-09T07:13:28.7476136Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>11 SQL to SQL.dtsx</Name>
+      <LastWriteTime>2025-08-09T08:47:31.5173112Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>12SQL to CSV.dtsx</Name>
+      <LastWriteTime>2025-08-09T08:53:13.7392557Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>15 Execute SQL Task Demo.dtsx</Name>
+      <LastWriteTime>2025-08-09T09:28:38.3117254Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

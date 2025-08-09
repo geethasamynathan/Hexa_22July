@@ -11,8 +11,8 @@
   DTS:LocaleID="16393"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{5320C3D1-BB5D-4499-A0F3-B12A7DC319A3}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{60E34D54-7ADC-457E-B4F4-ADB18940BC38}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -878,6 +878,14 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\Export City data from Excel to SQL Avoid the duplication while repeated Execution of Task\OLE DB Destination 1"
+          TopLeft="366.428572208602,282.941176222579" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Export City data from Excel to SQL Avoid the duplication while repeated Execution of Task\Flat File Source"
+          TopLeft="386.428572251176,74.9411764048994" />
+        <NodeLayout
           Size="138.4,41.6"
           Id="Package\Export City data from Excel to SQL Avoid the duplication while repeated Execution of Task\Excel Source"
           TopLeft="73.5714287280427,71.1176469964862" />
@@ -919,14 +927,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Export City data from Excel to SQL Avoid the duplication while repeated Execution of Task\Flat File Source"
-          TopLeft="386.428572251176,74.9411764048994" />
-        <NodeLayout
-          Size="179.2,41.6"
-          Id="Package\Export City data from Excel to SQL Avoid the duplication while repeated Execution of Task\OLE DB Destination 1"
-          TopLeft="366.428572208602,282.941176222579" />
         <EdgeLayout
           Id="Package\Export City data from Excel to SQL Avoid the duplication while repeated Execution of Task.Paths[Flat File Source Output]"
           TopLeft="458.828572229889,116.541176404899">
@@ -953,6 +953,19 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\Export City data from Excel to SQL Avoid the duplication while repeated Execution of Task\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\Export City data from Excel to SQL Avoid the duplication while repeated Execution of Task\Excel Source">
     <Properties>
       <Property>
@@ -967,19 +980,6 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Export City data from Excel to SQL Avoid the duplication while repeated Execution of Task\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Export City data from Excel to SQL Avoid the duplication while repeated Execution of Task\OLE DB Destination 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

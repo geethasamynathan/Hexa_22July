@@ -1,5 +1,4 @@
 
-# 🍼 SSIS Baby Notes  
 ## 🛠 How to Use the Execute SQL Task in SSIS
 
 ---
