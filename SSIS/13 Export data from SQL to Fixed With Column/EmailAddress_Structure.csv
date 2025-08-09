@@ -1,0 +1,6 @@
+Column,Length
+BusinessEntityID,20
+EmailAddressID,20
+EmailAddress,50
+RowGuid,50
+ModifiedDate,50

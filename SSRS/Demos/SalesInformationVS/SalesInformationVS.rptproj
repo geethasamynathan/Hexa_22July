@@ -55,6 +55,7 @@
     <DataSource Include="SharedSalesInformationVS.rds" />
   </ItemGroup>
   <ItemGroup>
+    <Report Include="Report1.rdl" />
     <Report Include="SalesInformationWizardReport.rdl" />
     <Report Include="SalesInfoVS.rdl" />
   </ItemGroup>

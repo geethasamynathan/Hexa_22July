@@ -1,0 +1,7 @@
+SELECT 
+    CAST(BusinessEntityID AS NVARCHAR(20)) AS BusinessEntityID,
+    CAST(EmailAddressID AS NVARCHAR(20)) AS EmailAddressID,
+    EmailAddress,
+    CAST(rowguid AS NVARCHAR(50)) AS rowguid,
+    CONVERT(NVARCHAR(50), ModifiedDate) AS ModifiedDate
+FROM Person.EmailAddress;
