@@ -1,0 +1,3 @@
+Create a new directory 
+copy files from one directory to newly created directory
+before creating the directory Check that directory exist already or not .based on that create a new directory

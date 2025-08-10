@@ -1,5 +1,3 @@
-# 📘 SSIS File System Task – Detailed Notes
-
 ## 1. What is File System Task in SSIS?
 The **File System Task** in SSIS (SQL Server Integration Services) is a **Control Flow** task that lets you perform file and folder operations within your package.  
 It enables automation of file management tasks such as **copying, moving, deleting, and creating directories**.
@@ -57,6 +55,7 @@ We want to:
      - Name: `User::NewDirectoryPath`
      - Value: `C:\Files\SSIS`
 4. Save and close the editor.
+5. ![alt text](image-1.png)
 
 ### Step 2 – Copy File
 1. **Drag and drop** another **File System Task** into Control Flow.
@@ -71,7 +70,8 @@ We want to:
    - **Source** → Create a **File Connection Manager**:
      - Point to `C:\Files\Courses.csv`
 4. Save and close the editor.
-
+5. ![alt text](image-2.png)
+![alt text](image.png)
 ### Step 3 – Execution Order
 - Connect **Create Directory** → **Copy File** with a green precedence constraint.
 - This ensures the folder is created before the file is copied.

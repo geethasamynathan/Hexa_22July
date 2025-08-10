@@ -1,0 +1,25 @@
+DROP TABLE IF EXISTS TestData;
+
+CREATE TABLE TestData (
+    ID varchar(50) NULL,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    gender VARCHAR(50),
+	company_name varchar(50)
+);
+
+
+CREATE INDEX ix_id ON testdata(id);
+GO
+CREATE INDEX ix_first_name ON testdata(first_name);
+GO
+
+CREATE INDEX ix_last_name ON testdata(last_name);
+GO
+CREATE INDEX ix_Gender ON testdata(Gender);
+GO
+
+CREATE INDEX ix_Company_Name ON testdata(Company_Name);
+GO
+CREATE INDEX ix_FNLN ON testdata(First_Name, Last_Name);
+GO
