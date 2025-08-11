@@ -1,0 +1,16 @@
+  
+use AdventureWorks2014
+sales.customer
+
+select count(*) from sales.Customer
+  select max(territoryId) from sales.Customer
+
+select * from sales.Customer where territoryId=1
+select * from sales.Customer where territoryId=2
+
+
+
+@[User::FolderPath]+"\\Customer_from_territory_"+(DT_WSTR,12) @[User::LoopCounter]+".csv"
+
+
+

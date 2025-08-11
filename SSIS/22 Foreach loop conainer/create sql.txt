@@ -1,0 +1,14 @@
+CREATE TABLE dbo.PersonData (
+    ID            INT,
+    FirstName     NVARCHAR(50),
+    LastName      NVARCHAR(50),
+    Gender        NVARCHAR(10),
+    CompanyName   NVARCHAR(100)
+);
+
+CREATE TABLE dbo.FileInfo (
+    id          INT IDENTITY(1,1) PRIMARY KEY,
+    filepath    NVARCHAR(260),
+    recordcount INT,
+    dated       DATETIME DEFAULT(GETDATE())
+);
