@@ -1,0 +1,748 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/11/2025 3:06:37 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-0TBPBTEL"
+  DTS:CreatorName="LAPTOP-0TBPBTEL\LENOVO"
+  DTS:DTSID="{CA3F77AB-6256-41D8-A1C1-0D200F3EAD6E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="16393"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{3E4A6A7E-ECD9-44A3-B4D5-D385DE67C23B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[.\sqlexpress.AdventureWorks2014]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{041F82F6-0353-4A79-A290-79276F50DA06}"
+      DTS:ObjectName=".\sqlexpress.AdventureWorks2014">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.\sqlexpress;Initial Catalog=AdventureWorks2014;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{041F82F6-0353-4A79-A290-79276F50DA06}.\sqlexpress.AdventureWorks2014;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{076D71AC-5C65-4AB2-B701-BF5B587BE881}"
+      DTS:ObjectName="Flat File Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="16393"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Personal\Hexa 22 july 25\Git Notes\Hexa_22July\SSIS\26 AggregateTransfomrmation in SSIS\aggregate.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Bonus_Max"
+              DTS:DTSID="{B7732757-306E-4B44-B169-1E2AE16F0F26}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="CommissionPct_Sum"
+              DTS:DTSID="{5350F8A5-2D89-4DE0-9958-35AFF0F6B845}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesYTD_Avg"
+              DTS:DTSID="{978BD2FD-D810-459C-A37F-3911B70D444B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:DataType="6"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SalesLastYear_Max"
+              DTS:DTSID="{C71FF17F-9A58-437D-8C95-D22FBB763DB8}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load aggregated data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BB6D2ACF-AFEF-4898-9C8A-21F1051C1632}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load aggregated data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load aggregated data\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load aggregated data\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load aggregated data\Aggregate.Inputs[Aggregate Input 1].Columns[Bonus]"
+                      cachedDataType="cy"
+                      cachedName="Bonus"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bonus]" />
+                    <inputColumn
+                      refId="Package\Load aggregated data\Aggregate.Inputs[Aggregate Input 1].Columns[CommissionPct]"
+                      cachedDataType="cy"
+                      cachedName="CommissionPct"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CommissionPct]" />
+                    <inputColumn
+                      refId="Package\Load aggregated data\Aggregate.Inputs[Aggregate Input 1].Columns[SalesYTD]"
+                      cachedDataType="cy"
+                      cachedName="SalesYTD"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesYTD]" />
+                    <inputColumn
+                      refId="Package\Load aggregated data\Aggregate.Inputs[Aggregate Input 1].Columns[SalesLastYear]"
+                      cachedDataType="cy"
+                      cachedName="SalesLastYear"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesLastYear]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[Bonus_Max]"
+                      dataType="cy"
+                      lineageId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[Bonus_Max]"
+                      name="Bonus_Max">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bonus]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">7</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[CommissionPct_Sum]"
+                      dataType="cy"
+                      lineageId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[CommissionPct_Sum]"
+                      name="CommissionPct_Sum">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CommissionPct]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">4</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[SalesYTD_Avg]"
+                      dataType="cy"
+                      lineageId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[SalesYTD_Avg]"
+                      name="SalesYTD_Avg">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesYTD]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">5</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[SalesLastYear_Max]"
+                      dataType="cy"
+                      lineageId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[SalesLastYear_Max]"
+                      name="SalesLastYear_Max">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesLastYear]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">7</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load aggregated data\Flat File Destination"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="16393"
+              name="Flat File Destination"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load aggregated data\Flat File Destination.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].Columns[Bonus_Max]"
+                      cachedDataType="cy"
+                      cachedName="Bonus_Max"
+                      externalMetadataColumnId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Bonus_Max]"
+                      lineageId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[Bonus_Max]" />
+                    <inputColumn
+                      refId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].Columns[CommissionPct_Sum]"
+                      cachedDataType="cy"
+                      cachedName="CommissionPct_Sum"
+                      externalMetadataColumnId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CommissionPct_Sum]"
+                      lineageId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[CommissionPct_Sum]" />
+                    <inputColumn
+                      refId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].Columns[SalesYTD_Avg]"
+                      cachedDataType="cy"
+                      cachedName="SalesYTD_Avg"
+                      externalMetadataColumnId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SalesYTD_Avg]"
+                      lineageId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[SalesYTD_Avg]" />
+                    <inputColumn
+                      refId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].Columns[SalesLastYear_Max]"
+                      cachedDataType="cy"
+                      cachedName="SalesLastYear_Max"
+                      externalMetadataColumnId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SalesLastYear_Max]"
+                      lineageId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1].Columns[SalesLastYear_Max]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Bonus_Max]"
+                      dataType="cy"
+                      name="Bonus_Max" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[CommissionPct_Sum]"
+                      dataType="cy"
+                      name="CommissionPct_Sum" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SalesYTD_Avg]"
+                      dataType="cy"
+                      name="SalesYTD_Avg" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[SalesLastYear_Max]"
+                      dataType="cy"
+                      name="SalesLastYear_Max" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Load aggregated data\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[Sales].[SalesPerson]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load aggregated data\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[.\sqlexpress.AdventureWorks2014]"
+                  connectionManagerRefId="Package.ConnectionManagers[.\sqlexpress.AdventureWorks2014]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesQuota]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesQuota]"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesQuota]"
+                      name="SalesQuota"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesYTD]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesYTD]"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesYTD]"
+                      name="SalesYTD"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesLastYear]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesLastYear]"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[SalesLastYear]"
+                      name="SalesLastYear"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[TerritoryID]"
+                      name="TerritoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bonus]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bonus]"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[Bonus]"
+                      name="Bonus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CommissionPct]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CommissionPct]"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[CommissionPct]"
+                      name="CommissionPct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[rowguid]"
+                      name="rowguid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesQuota]"
+                      dataType="cy"
+                      name="SalesQuota" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesYTD]"
+                      dataType="cy"
+                      name="SalesYTD" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SalesLastYear]"
+                      dataType="cy"
+                      name="SalesLastYear" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                      dataType="i4"
+                      name="TerritoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Bonus]"
+                      dataType="cy"
+                      name="Bonus" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CommissionPct]"
+                      dataType="cy"
+                      name="CommissionPct" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                      dataType="i4"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[TerritoryID]"
+                      name="TerritoryID" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesQuota]"
+                      dataType="cy"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesQuota]"
+                      name="SalesQuota" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bonus]"
+                      dataType="cy"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Bonus]"
+                      name="Bonus" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CommissionPct]"
+                      dataType="cy"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CommissionPct]"
+                      name="CommissionPct" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesYTD]"
+                      dataType="cy"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesYTD]"
+                      name="SalesYTD" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesLastYear]"
+                      dataType="cy"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[SalesLastYear]"
+                      name="SalesLastYear" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[rowguid]"
+                      name="rowguid" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load aggregated data.Paths[Aggregate Output 1]"
+              endId="Package\Load aggregated data\Flat File Destination.Inputs[Flat File Destination Input]"
+              name="Aggregate Output 1"
+              startId="Package\Load aggregated data\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\Load aggregated data.Paths[OLE DB Source Output]"
+              endId="Package\Load aggregated data\Aggregate.Inputs[Aggregate Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\Load aggregated data\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="181.6,41.6"
+          Id="Package\Load aggregated data"
+          TopLeft="301.428572070234,89.4705881568697" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load aggregated data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Load aggregated data\OLE DB Source"
+          TopLeft="350.000000745058,76.4705881682647" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Load aggregated data\Aggregate"
+          TopLeft="382.142857956339,191.941176302344" />
+        <EdgeLayout
+          Id="Package\Load aggregated data.Paths[OLE DB Source Output]"
+          TopLeft="424.800000745058,118.070588168265">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.5428572112806,73.8705881340797"
+              Start="0,0"
+              End="20.5428572112806,66.3705881340797">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.9352940670398" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.9352940670398"
+                    Point2="0,36.9352940670398"
+                    Point3="4,36.9352940670398" />
+                  <mssgle:LineSegment
+                    End="16.5428572112806,36.9352940670398" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.5428572112806,36.9352940670398"
+                    Point2="20.5428572112806,36.9352940670398"
+                    Point3="20.5428572112806,40.9352940670398" />
+                  <mssgle:LineSegment
+                    End="20.5428572112806,66.3705881340797" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-7.56304405060968,41.9352940670398,35.6689453125,9.4462890625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Load aggregated data\Flat File Destination"
+          TopLeft="362.142857913764,309.705882081472" />
+        <EdgeLayout
+          Id="Package\Load aggregated data.Paths[Aggregate Output 1]"
+          TopLeft="446.542857935052,233.541176302344">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76.1647057791275"
+              Start="0,0"
+              End="0,68.6647057791275">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.6647057791275" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-15.10447265625,29.6092083583138,30.2089453125,9.4462890625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load aggregated data\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
