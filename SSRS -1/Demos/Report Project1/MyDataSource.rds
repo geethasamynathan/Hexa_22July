@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="MyDataSource">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data source=LAPTOP-0TBPBTEL\SQLEXPRESS;
+Initial catalog=AdventureWorks2014;Encrypt=True;TrustServerCertificate=True
+
+
+</ConnectString>
+    <IntegratedSecurity>true</IntegratedSecurity>
+  </ConnectionProperties>
+  <DataSourceID>f53d4e1c-7c59-4ec0-b35e-bde86788f442</DataSourceID>
+</RptDataSource>
