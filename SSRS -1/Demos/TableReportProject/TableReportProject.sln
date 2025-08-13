@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "TableReportProject", "TableReportProject.rptproj", "{6CB51F38-11DC-4A76-9B1F-F771A7AA07CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CB51F38-11DC-4A76-9B1F-F771A7AA07CF}.Debug|Default.ActiveCfg = Debug
+		{6CB51F38-11DC-4A76-9B1F-F771A7AA07CF}.Debug|Default.Build.0 = Debug
+		{6CB51F38-11DC-4A76-9B1F-F771A7AA07CF}.Debug|Default.Deploy.0 = Debug
+		{6CB51F38-11DC-4A76-9B1F-F771A7AA07CF}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{6CB51F38-11DC-4A76-9B1F-F771A7AA07CF}.DebugLocal|Default.Build.0 = DebugLocal
+		{6CB51F38-11DC-4A76-9B1F-F771A7AA07CF}.Release|Default.ActiveCfg = Release
+		{6CB51F38-11DC-4A76-9B1F-F771A7AA07CF}.Release|Default.Build.0 = Release
+		{6CB51F38-11DC-4A76-9B1F-F771A7AA07CF}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9B65668-2CA1-4B3C-9AEA-C560A67BE72D}
+	EndGlobalSection
+EndGlobal

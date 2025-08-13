@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>dsAdventureWorks2014</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@StartDate">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@EndDate">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT
+    t.CountryRegionCode,
+    t.Name               AS Territory,
+    t.TerritoryID,
+    SUM(soh.SubTotal)    AS SalesAmount,
+    COUNT(DISTINCT soh.SalesOrderID) AS Orders,
+    COUNT(DISTINCT soh.CustomerID)    AS Customers
+FROM Sales.SalesOrderHeader AS soh
+JOIN Sales.SalesTerritory   AS t  ON soh.TerritoryID = t.TerritoryID
+   WHERE (@StartDate IS NULL OR OrderDate &gt;= @StartDate)
+  AND (@EndDate   IS NULL OR OrderDate &lt;= @EndDate)
+GROUP BY t.CountryRegionCode, t.Name, t.TerritoryID
+ORDER BY SalesAmount DESC;</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="CountryRegionCode">
+        <DataField>CountryRegionCode</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Territory">
+        <DataField>Territory</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="TerritoryID">
+        <DataField>TerritoryID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="SalesAmount">
+        <DataField>SalesAmount</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="Orders">
+        <DataField>Orders</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Customers">
+        <DataField>Customers</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

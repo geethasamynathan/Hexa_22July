@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Paginated_Drill_Sub_Reports_Demo", "Paginated_Drill_Sub_Reports_Demo.rptproj", "{DA04C2D4-B053-42DA-993A-51FE2650767C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA04C2D4-B053-42DA-993A-51FE2650767C}.Debug|Default.ActiveCfg = Debug
+		{DA04C2D4-B053-42DA-993A-51FE2650767C}.Debug|Default.Build.0 = Debug
+		{DA04C2D4-B053-42DA-993A-51FE2650767C}.Debug|Default.Deploy.0 = Debug
+		{DA04C2D4-B053-42DA-993A-51FE2650767C}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{DA04C2D4-B053-42DA-993A-51FE2650767C}.DebugLocal|Default.Build.0 = DebugLocal
+		{DA04C2D4-B053-42DA-993A-51FE2650767C}.Release|Default.ActiveCfg = Release
+		{DA04C2D4-B053-42DA-993A-51FE2650767C}.Release|Default.Build.0 = Release
+		{DA04C2D4-B053-42DA-993A-51FE2650767C}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3699A45-CB06-41AC-8B3C-4491090FA74D}
+	EndGlobalSection
+EndGlobal

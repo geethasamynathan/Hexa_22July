@@ -1,0 +1,26 @@
+Database :AdevntureWorks2019DW
+Table REport
+-----------------
+SELECT FirstName, LastName, Gender, EmailAddress,  
+       EnglishEducation, EnglishOccupation, Phone,YearlyIncome
+FROM DimCustomer
+ORDER BY FirstName DESC, LastName DESC
+===============================================================================================================
+
+Matrix Report
+--------------
+SELECT Geo.[EnglishCountryRegionName] AS [Country]
+      ,Geo.[StateProvinceName] AS [State] ,Geo.[City]
+      ,Cust.FirstName +' '+ Cust.LastName AS [Full Name]  
+      ,Cust.EnglishEducation AS Education ,Cust.EnglishOccupation AS Occupation
+      ,Cust.Gender,SUM(Cust.YearlyIncome) AS YearlyIncome,SUM(Fact.SalesAmount)AS SalesAmount 
+FROM  DimCustomer AS Cust
+  INNER JOIN FactInternetSales AS Fact ON Cust.CustomerKey = Fact.CustomerKey
+ INNER JOIN [DimGeography] AS Geo ON Cust.GeographyKey = Geo.GeographyKey
+ GROUP BY Geo.[EnglishCountryRegionName] ,Geo.[StateProvinceName] 
+	 ,Geo.[City], Cust.FirstName ,Cust.LastName ,Cust.EnglishEducation 
+         ,Cust.EnglishOccupation ,Cust.Gender
+  ORDER BY [Country]
+
+=======================================================================================================================
+

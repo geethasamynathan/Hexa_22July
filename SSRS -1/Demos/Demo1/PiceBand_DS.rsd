@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>AW2014_Source</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@Category">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@MinPrice">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@MaxPrice">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>-- dsSales
+SELECT
+    pc.Name  AS Category,
+    p.Name   AS ProductName,
+    p.ListPrice,
+    CASE
+        WHEN p.ListPrice &lt; 50 THEN 'Under 50'
+        WHEN p.ListPrice &lt; 200 THEN '50–199'
+        WHEN p.ListPrice &lt; 500 THEN '200–499'
+        WHEN p.ListPrice &lt; 1000 THEN '500–999'
+        ELSE '1000+'
+    END AS PriceBand,
+    SUM(sod.OrderQty)   AS Units,          
+    SUM(sod.LineTotal)  AS Revenue         
+FROM Production.Product p
+JOIN Production.ProductSubcategory ps ON p.ProductSubcategoryID = ps.ProductSubcategoryID
+JOIN Production.ProductCategory pc     ON ps.ProductCategoryID = pc.ProductCategoryID
+JOIN Sales.SalesOrderDetail sod        ON p.ProductID = sod.ProductID
+WHERE
+    ( @Category IS NULL OR LTRIM(RTRIM(@Category)) = '' OR pc.Name = @Category )
+AND ( @MinPrice IS NULL OR p.ListPrice &gt;= @MinPrice )
+AND ( @MaxPrice IS NULL OR p.ListPrice &lt;= @MaxPrice )
+GROUP BY
+    pc.Name, p.Name, p.ListPrice,
+    CASE
+        WHEN p.ListPrice &lt; 50 THEN 'Under 50'
+        WHEN p.ListPrice &lt; 200 THEN '50–199'
+        WHEN p.ListPrice &lt; 500 THEN '200–499'
+        WHEN p.ListPrice &lt; 1000 THEN '500–999'
+        ELSE '1000+'
+    END
+ORDER BY pc.Name, PriceBand, Revenue DESC;
+</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Category">
+        <DataField>Category</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ProductName">
+        <DataField>ProductName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ListPrice">
+        <DataField>ListPrice</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+      <Field Name="PriceBand">
+        <DataField>PriceBand</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Units">
+        <DataField>Units</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Revenue">
+        <DataField>Revenue</DataField>
+        <rd:TypeName>System.Decimal</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RptDataSource xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="AW2014_Source">
+  <ConnectionProperties>
+    <Extension>SQL</Extension>
+    <ConnectString>Data source=LAPTOP-0TBPBTEL\SQLEXPRESS;
+Initial catalog=AdventureWorks2014;</ConnectString>
+    <IntegratedSecurity>true</IntegratedSecurity>
+  </ConnectionProperties>
+  <DataSourceID>9a7c3be3-9ed9-4f6b-9247-b80c3b35015c</DataSourceID>
+</RptDataSource>
