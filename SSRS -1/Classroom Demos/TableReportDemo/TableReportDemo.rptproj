@@ -57,6 +57,7 @@
   <ItemGroup>
     <Report Include="TableReport1.rdl" />
     <Report Include="TablewithBlockwithSubTotals.rdl" />
+    <Report Include="TableWithCalculatedFields.rdl" />
     <Report Include="TableWithPageEnglishEducation.rdl" />
     <Report Include="TableWithTotalGroupPage.rdl" />
   </ItemGroup>

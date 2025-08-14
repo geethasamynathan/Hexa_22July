@@ -1,0 +1,10 @@
+What is worksheet?
+What are all the things we can perform on worksheet
+Rename the worksheet
+Duplicate the worksheet
+
+
+
+without fully qualified name how to execute
+What is Role
+what is warehouse

@@ -23,4 +23,100 @@ FROM  DimCustomer AS Cust
   ORDER BY [Country]
 
 =======================================================================================================================
+Stored_Procedure
+--------------
 
+IF OBJECT_ID ( 'SP_ProductSales', 'P' ) IS NOT NULL   
+    DROP PROCEDURE SP_ProductSales;  
+GO
+ 
+CREATE PROCEDURE [dbo].[SP_ProductSales]
+AS
+BEGIN
+      SET NOCOUNT ON;
+	  SELECT TOP 3000 Prod.Color, 
+             Prod.EnglishProductName AS ProductName, 
+             Fact.SalesAmount,
+	         Fact.OrderQuantity, 
+             Fact.TotalProductCost, 
+             Fact.TaxAmt
+       FROM DimProduct AS Prod 
+         INNER JOIN FactInternetSales AS Fact 
+            ON Prod.ProductKey = Fact.ProductKey 
+END
+GO
+
+
+=================================================================================================================
+Exec sp_ProductSales
+
+
+
+
+================================================================================
+Alternate row color expression
+----------------------------------
+IIF(RowNumber(Nothing) MOD 2=0,"PaleTurquoise","Plum")
+
+===============================================================================
+
+Apply alternate background color for different group:
+-------------------------------------------------------
+
+Add New Dataset with below query
+------------------------------
+WITH RankedCustomers AS
+(
+    SELECT 
+        FirstName + ' ' + LastName AS FullName,
+        Gender,
+        EnglishEducation,
+        EnglishOccupation,
+        YearlyIncome,
+        ROW_NUMBER() OVER (
+            PARTITION BY EnglishOccupation 
+            ORDER BY FirstName DESC, LastName DESC
+        ) AS RowNum
+    FROM DimCustomer
+)
+SELECT 
+    FullName,
+    Gender,
+    EnglishEducation,
+    EnglishOccupation,
+    YearlyIncome
+FROM RankedCustomers
+WHERE RowNum <= 5
+ORDER BY EnglishOccupation, RowNum;
+
+
+EnglishOccupation -> move Row Group->
+Select Details Row  =>Properties ->BackgroundColor ->Expressions
+=IIF(
+  RunningValue(Fields!EnglishOccupation.Value, CountDistinct, Nothing) MOD 2 = 0,
+  "PaleTurquoise",
+  "Plum"
+)
+
+=========================================================
+IIF Condition
+-------------
+
+SELECT Prod.EnglishProductName AS ProductName, Prod.Color, 
+       SUM(Fact.OrderQuantity) AS Orders, SUM(Fact.TotalProductCost) AS ProductCost, 
+       SUM(Fact.SalesAmount) AS Sales, SUM(Fact.TaxAmt) AS Tax
+FROM FactInternetSales AS Fact
+   INNER JOIN DimProduct AS Prod ON Fact.ProductKey = Prod.ProductKey
+   GROUP BY Prod.EnglishProductName, Prod.Color
+
+===========================================================================================================
+
+Null value Handling
+--------------------
+SELECT [FirstName],[MiddleName],[LastName],[Gender],[EmailAddress]
+	  ,SUM([SalesAmount]) AS Sales, SUM([TaxAmt]) AS Tax
+  FROM [DimCustomer]
+  JOIN FactInternetSales ON DimCustomer.CustomerKey  = FactInternetSales.CustomerKey
+  GROUP BY [FirstName],[MiddleName],[LastName],[Gender],[EmailAddress]
+
+==================================================================================================================

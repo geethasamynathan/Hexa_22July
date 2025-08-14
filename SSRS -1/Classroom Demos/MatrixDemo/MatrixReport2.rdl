@@ -9,7 +9,7 @@
       <am:Name>SSDTRS</am:Name>
       <am:Version>17.8.34316.72</am:Version>
     </am:UpdatedBy>
-    <am:LastModifiedTimestamp>2025-08-13T04:57:30.6558142Z</am:LastModifiedTimestamp>
+    <am:LastModifiedTimestamp>2025-08-13T05:31:18.5812044Z</am:LastModifiedTimestamp>
   </am:AuthoringMetadata>
   <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
   <AutoRefresh>0</AutoRefresh>
@@ -533,8 +533,8 @@
             <DataSetName>DataSet1</DataSetName>
             <Top>0.60537cm</Top>
             <Left>1.0922cm</Left>
-            <Height>4.12833cm</Height>
-            <Width>18.08567cm</Width>
+            <Height>4.12834cm</Height>
+            <Width>18.08566cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -545,8 +545,112 @@
         <Height>2.12455in</Height>
         <Style />
       </Body>
-      <Width>7.55034in</Width>
+      <Width>11.31701in</Width>
       <Page>
+        <PageHeader>
+          <Height>2.54987cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Image Name="Image1">
+              <Source>Embedded</Source>
+              <Value>advlogo</Value>
+              <Sizing>Fit</Sizing>
+              <Top>0.28787cm</Top>
+              <Left>0.6477cm</Left>
+              <Height>2.08561cm</Height>
+              <Width>5.09833cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+            <Textbox Name="Textbox1">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Country and Gender wise Yearly Income Report</Value>
+                      <Style>
+                        <FontSize>24pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>Blue</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>0.28787cm</Top>
+              <Left>7.29403cm</Left>
+              <Height>1.76811cm</Height>
+              <Width>19.645cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>2.54cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="txtFooter">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Report Created by Geetha</Value>
+                      <Style>
+                        <FontSize>18pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                        <Color>Blue</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.44167in</Top>
+              <Left>7.40017in</Left>
+              <Height>0.38333in</Height>
+              <Width>3.7in</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
@@ -564,6 +668,19 @@
       <NumberOfRows>2</NumberOfRows>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="advlogo">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>9803ba0d-6b36-4659-8ac7-688f30fbfe18</rd:ReportID>
 </Report>

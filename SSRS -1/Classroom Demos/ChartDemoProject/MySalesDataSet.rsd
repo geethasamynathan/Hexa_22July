@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>MyAdavetureWorks2014DataSource</DataSourceReference>
+      <CommandText>USE [AdventureWorks2014]
+GO
+SELECT [StateProvinceName], [SalesYTD], [SalesLastYear]
+FROM [Sales].[vSalesPerson]</CommandText>
+    </Query>
+  </DataSet>
+</SharedDataSet>

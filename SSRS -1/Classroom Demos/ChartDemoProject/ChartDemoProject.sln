@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "ChartDemoProject", "ChartDemoProject.rptproj", "{9A3B60E2-5E03-47C0-99AD-C6EBF670B7A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9A3B60E2-5E03-47C0-99AD-C6EBF670B7A9}.Debug|Default.ActiveCfg = Debug
+		{9A3B60E2-5E03-47C0-99AD-C6EBF670B7A9}.Debug|Default.Build.0 = Debug
+		{9A3B60E2-5E03-47C0-99AD-C6EBF670B7A9}.Debug|Default.Deploy.0 = Debug
+		{9A3B60E2-5E03-47C0-99AD-C6EBF670B7A9}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{9A3B60E2-5E03-47C0-99AD-C6EBF670B7A9}.DebugLocal|Default.Build.0 = DebugLocal
+		{9A3B60E2-5E03-47C0-99AD-C6EBF670B7A9}.Release|Default.ActiveCfg = Release
+		{9A3B60E2-5E03-47C0-99AD-C6EBF670B7A9}.Release|Default.Build.0 = Release
+		{9A3B60E2-5E03-47C0-99AD-C6EBF670B7A9}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4BA8E0CD-E3D8-4B56-9DF7-0D196EC1A752}
+	EndGlobalSection
+EndGlobal
