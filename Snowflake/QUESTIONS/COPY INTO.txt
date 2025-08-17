@@ -1,0 +1,111 @@
+Q:
+If we get the error message
+User character length limit (50) exceeded by string [...]
+and we cannot or do not want to change the column data type, what could we do to load the data anyways?
+
+Options:
+
+TRUNCATECOLUMNS = TRUE ✅ (Correct)
+→ This allows Snowflake to automatically truncate the incoming string to fit the column length.
+
+TRUNCATECOLUMNS = FALSE
+→ Default behavior; load fails if the string is longer than the defined column length.
+
+FORCE = TRUE
+→ Forces Snowflake to reload files even if already processed, but does not solve length errors.
+
+FORCE = FALSE
+→ Default; prevents reloading unchanged files, unrelated to column length.
+
+RETURN_FAILED_ONLY = TRUE
+→ Shows only failed files in COPY output; does not solve length errors.
+
+RETURN_FAILED_ONLY = FALSE
+→ Shows all files in COPY output; does not solve length errors.
+
+
+
+2.
+
+We have 3 files in our external stage with 20MB (~20,000,000 bytes) each.  
+
+How many files will be loaded if we set `SIZE_LIMIT = 30 000 000`?
+
+- [ ] 0  
+- [ ] 1  
+- [X] 2  
+- [ ] 3  
+
+
+
+3.Question 5:
+
+You have several reports that run on an extremely large table of 10TB.
+
+This table contains transactional data including a date column and country column.
+
+There is one report for each country in that only the data of the according country will be queried and a filter for the time will be used frequently.
+
+What would be a good approach?
+
+Options:
+
+Introducing a cluster key only on the country.
+
+Introducing a cluster key both on the country as well as on the date. 
+
+Correct! It makes sense to introduce a cluster key on both the date column as well as the region (country) column since the region will always be filtered in every report and the date will be used frequently in the report as well.
+
+Introducing a cluster key only on the date.
+
+We don't need to do anything since Snowflake is managing the cluster keys.
+
+
+4.)
+
+True or False?
+
+Once a virtual warehouse has been created it is not possible to scale it up?
+
+Options:
+
+False ✅
+
+True
+
+
+
+5) What is the best approach to handle fluctuating numbers of users?
+
+Options:
+
+Scaling up
+
+Scaling out ✅ (Correct – Scaling out adds more clusters to handle concurrent queries effectively)
+
+Clustering
+
+
+6)
+What is the best approach to handle increased workload for a specific time period?
+
+Options:
+
+Scaling up ✅ (Correct – Scaling up increases the size of the warehouse to handle heavier workloads temporarily)
+
+Scaling out
+
+Clustering
+
+)
+
+7)
+How can caching be maximized?
+
+Options:
+
+Increase the size of the virtual warehouse ✅ (Correct – Larger warehouses have more local cache memory available for query processing)
+
+Create dedicated virtual warehouses for similar user groups
+
+Increase the caching size property in the virtual warehouse (❌ No such property exists in Snowflake)

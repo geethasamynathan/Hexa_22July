@@ -1,0 +1,10 @@
+snowflake architecture
+snowflake warehouse lifecycle
+scaling_policies
+database, schemae, tables,stages,Loading data, 
+
+copy into particular file,all files, particular column from stage, calculated columns from stage,On_ERROR(continue,sip_File,sip_file_2,ABORT_STATEMENT), validation mode 
+rejected records,
+size limit
+return_failed_only
+
